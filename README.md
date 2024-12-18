@@ -1,1 +1,6 @@
-# NODE-Course-02-Bases
+# 02 Node Bases
+
+Run in dev
+```
+npm run dev
+```
