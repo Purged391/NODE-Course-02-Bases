@@ -1,3 +1,5 @@
+
+
 // !Promises
 
 export const getPokemonByIdP = (id: number): Promise<string> => {
@@ -18,10 +20,14 @@ export const getPokemonByIdA = async(id: number): Promise<string> => {
 };
 
 // !Service
-const {http} = require('../plugins');
+import { httpClientPlugin as http } from "../plugins/http-client.plugin";
 
 export const getPokemonById = async(id: number) : Promise<string> => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-    const pokemon = await http.get(url);
-    return pokemon.name;
+    try{
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+        const pokemon = await http.get(url);
+        return pokemon.name;
+    } catch (error) {
+        throw 'Not Found';
+    }
 };
